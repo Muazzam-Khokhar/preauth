@@ -1,0 +1,12 @@
+.datepicker {
+    position: relative;
+  }
+  
+  .datepicker .react-datepicker__triangle {
+    top: 0 !important; /* Ensure the triangle is at the top */
+    bottom: auto !important; /* Ensure the triangle is not at the bottom */
+  }
+  .rounded {
+    border: none; /* Adjust the radius as needed */
+  }
+  
