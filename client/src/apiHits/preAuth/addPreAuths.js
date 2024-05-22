@@ -2,15 +2,15 @@ import axios from "axios";
 
 const baseUrl = 'http://localhost:5000/api/preauth';
 
-const addPreAuths = async (newPreAuth) => {
+const addProvider = async (newProvider) => {
     try {
-        if(!newPreAuth) return;
-        const res = await axios.post(baseUrl, newPreAuth);
+        if(!newProvider) return;
+        const res = await axios.post(baseUrl, newProvider);
         return res.data;
     } catch (error) {
-        console.error('Error adding new preAuth', error);
+        console.error('Error adding new Provider', error);
         throw error;
     }
 }
 
-export default addPreAuths;
+export default addProvider;

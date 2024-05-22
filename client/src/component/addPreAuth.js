@@ -13,18 +13,13 @@ const AddPreAuth = ({setIsClick}) => {
     startDate: null, 
     endDate: null 
     }); 
-  const location = [
-    { value: 'IPFD'},
-    { value: 'Mitchell'},
-    { value: 'Lawndale'},
-    { value: 'Bucktown'},
-  ];
-  const providers = [
-    { value: 'Ahmad'},
-    { value: 'Parvez'},
-    { value: 'Faraz'},
-    { value: 'Jack'},
-  ];
+    const [location, setLocation] = useState('');
+    const [providerName, setProviderName] = useState('');
+    const [showLocationList, setShowLocationList] = useState(false);
+
+  
+    const locations = ['IPFD', 'Mitchell', 'Lawndale', 'Bucktown'];
+    const providers = ['Ahmad', 'Parvez', 'Faraz', 'Jack'];
 
   const validationSchema = Yup.object().shape({
     location: Yup.string().required('Location is required'),
@@ -86,12 +81,37 @@ const AddPreAuth = ({setIsClick}) => {
             <Form className='px-6 font-serif'>
               <div className='mt-4'>
                 <h6 className='font-bold'>Location:</h6>
-                <Field as="select" name="location" className="border border-neutral-300 rounded-md w-full h-10 p-2">
-                  <option value="" disabled>Select Location</option>
-                  {location.map(option => (
-                    <option key={option.value} value={option.value}>{option.value}</option>
-                  ))}
-                </Field>
+                <Field
+                    type="text"
+                    name="location"
+                    value={location}
+                    onChange={(e) => {
+                      setLocation(e.target.value);
+                      setShowLocationList(true); // Show the list when typing
+                    }}
+                    onFocus={() => setShowLocationList(true)} // Show the list when clicking
+                    onBlur={() => setShowLocationList(false)}
+                    className="border border-neutral-300 rounded-md w-full h-10 p-2"
+                    placeholder="Type or select location"
+                  />
+                  {showLocationList && (
+                    <div className="mt-2 absolute z-10 w-full border border-gray-300 bg-white rounded-md shadow-md">
+                      {locations
+                        .filter(option => option.toLowerCase().includes(location.toLowerCase()))
+                        .map((option, index) => (
+                          <div
+                            key={index}
+                            className="px-3 py-2 cursor-pointer hover:bg-gray-100"
+                            onClick={() => {
+                              setLocation(option);
+                              setShowLocationList(false); // Hide the list when an option is selected
+                            }}
+                          >
+                            {option}
+                          </div>
+                        ))}
+                    </div>
+                  )}
                 {errors.location && touched.location ? <div className='text-red-600 font-semibold text-sm'>*{errors.location}</div> : null}
               </div>
               <div className='mt-2.5'>

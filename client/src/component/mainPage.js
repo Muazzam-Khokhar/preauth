@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import getAllPreAuths from '../apiHits/preAuth/getAllPreAuth';
 import moment from 'moment';
 import AddPreAuth from './addPreAuth';
+import AddProvider from './addProvider';
 
 
 const MainPage = () => {
@@ -57,6 +58,7 @@ const MainPage = () => {
                 ))}
               </tbody>
             </table>
+            <AddProvider/>
           </div>
         </>)}
     </>);
