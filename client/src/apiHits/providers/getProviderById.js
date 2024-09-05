@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let baseUrl = 'http://localhost:5000/api/preauth';
+let baseUrl = 'http://localhost:5000/api/provider';
 
 const getProviderById = async (id) => {
     try {

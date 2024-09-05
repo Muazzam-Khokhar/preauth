@@ -1,8 +1,8 @@
 import axios from "axios";
 
-let baseUrl = 'http://localhost:5000/api/preauth';
+let baseUrl = 'http://localhost:5000/api/provider';
 
-const getAllProvider = async () => {
+const getAllProviders = async () => {
     try {
         const res = await axios.get(baseUrl);
         console.log("respnose",res)
@@ -12,4 +12,4 @@ const getAllProvider = async () => {
         throw error
     }
 }
-export default getAllProvider
+export default getAllProviders

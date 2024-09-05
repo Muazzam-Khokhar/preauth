@@ -68,7 +68,7 @@ const AddPreAuth = ({setIsClick}) => {
   }
   return (
     <>
-    <div className='flex h-screen flex-col justify-center bg-gray-100 items-center'>
+    <div className='flex h-screen w-full flex-col justify-center bg-gray-100 items-center'>
       <div className='w-[40rem] bg-white py-3 rounded-3xl shadow-xl shadow-slate-500'>
       <button className='absolute top-5 right-5 bg-cyan-600 text-white px-3 py-1 rounded-full' onClick={handleCancel}>x</button>
         <h1 className='text-cyan-600 text-[2rem] font-bold font-serif text-center tracking-tighter'>Pre Authorization Request</h1>

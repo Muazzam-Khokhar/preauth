@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
-import addProvider from '../apiHits/preAuth/addPreAuths';
+import addProvider from '../apiHits/providers/addProvider';
+import InputMask from 'react-input-mask';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
 const AddProvider = () => {
-    // State variables to manage form data
+
+    const validationSchema = Yup.object().shape({
+        name: Yup.string().required('Location is required'),
+        address: Yup.string().required('Address is required'),
+        name: Yup.string().required('Provider Name is required'),
+        phoneNumber: Yup.string().required('Phone Number required').matches(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/,'Phone number is not valid'),
+        city: Yup.string().required('City Required'),
+        zipCode: Yup.string().required('Zip Code required'),
+        province: Yup.string().required('State required'),
+        licenseNumber: Yup.string().required('License Number required'),
+      });
     const [formData, setFormData] = useState({
         name: '',
         phoneNumber: '',
